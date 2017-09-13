@@ -1,5 +1,4 @@
 FROM alpine:3.6
-MAINTAINER Adrian Dvergsdal [atmoz.net]
 
 # - Install packages
 # - Fix default group (1000 does not exist)
