@@ -2,19 +2,10 @@
 
 ![Docker Automated build](https://img.shields.io/docker/automated/netresearch/sftp.svg) ![Docker Build Status](https://img.shields.io/docker/build/netresearch/sftp.svg) ![Docker Stars](https://img.shields.io/docker/stars/netresearch/sftp.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/netresearch/sftp.svg)
 
-![OpenSSH logo](https://raw.githubusercontent.com/netresearch/docker-sftp/master/openssh.png "Powered by OpenSSH")
-
-# Supported tags and respective `Dockerfile` links
-
-- [`debian-jessie`, `debian`, `latest` (*Dockerfile*)](https://github.com/netresearch/sftp/blob/master/Dockerfile) [![](https://images.microbadger.com/badges/image/netresearch/sftp.svg)](http://microbadger.com/images/netresearch/sftp "Get your own image badge on microbadger.com")
-- [`alpine-3.6`, `alpine` (*Dockerfile*)](https://github.com/netresearch/sftp/blob/alpine/Dockerfile) [![](https://images.microbadger.com/badges/image/netresearch/sftp:alpine.svg)](http://microbadger.com/images/netresearch/sftp:alpine "Get your own image badge on microbadger.com")
-- [`alpine-3.5` (*Dockerfile*)](https://github.com/netresearch/sftp/blob/alpine-3.5/Dockerfile) [![](https://images.microbadger.com/badges/image/netresearch/sftp:alpine-3.5.svg)](http://microbadger.com/images/netresearch/sftp:alpine "Get your own image badge on microbadger.com")
-- [`alpine-3.4` (*Dockerfile*)](https://github.com/netresearch/sftp/blob/alpine-3.4/Dockerfile) [![](https://images.microbadger.com/badges/image/netresearch/sftp:alpine-3.4.svg)](http://microbadger.com/images/netresearch/sftp:alpine-3.4 "Get your own image badge on microbadger.com")
-
 # Securely share your files
 
 Easy to use SFTP ([SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) server with [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH).
-This is an automated build linked with the [debian](https://hub.docker.com/_/debian/) and [alpine](https://hub.docker.com/_/alpine/) repositories.
+This is an automated build linked with the [alpine](https://hub.docker.com/_/alpine/) repositories.
 
 # Usage
 
@@ -179,15 +170,3 @@ bindmount /data/common /home/dave/common
 bindmount /data/common /home/peter/common
 bindmount /data/docs /home/peter/docs --read-only
 ```
-
-# What's the difference between Debian and Alpine?
-
-The biggest differences are in size and OpenSSH version.
-[Alpine](https://hub.docker.com/_/alpine/) is 10 times smaller than
-[Debian](https://hub.docker.com/_/debian/). OpenSSH version can also differ, as
-it's two different teams maintaining the packages. Debian is generally
-considered more stable and only bugfixes and security fixes are added after
-each Debian release (about 2 years). Alpine has a faster release cycle (about 6
-months) and therefore newer versions of OpenSSH. As I'm writing this, Debian
-has version 6.7 while Alpine has version 7.4. Recommended reading:
-[Comparing Debian vs Alpine for container & Docker apps](https://www.turnkeylinux.org/blog/alpine-vs-debian)
