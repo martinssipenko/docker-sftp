@@ -1,5 +1,3 @@
-![Logo Netresearch](./docs/netresearch.jpg)
-
 ![Docker automated](https://img.shields.io/docker/automated/netresearch/sftp.svg)![Docker build](https://img.shields.io/docker/build/netresearch/sftp.svg)![Docker stars](https://img.shields.io/docker/stars/netresearch/sftp.svg)![Docker pulls](https://img.shields.io/docker/pulls/netresearch/sftp.svg)
 
 
@@ -135,3 +133,8 @@ bindmounts after container starts.
     bindmount /data/common /home/dave/common
     bindmount /data/common /home/peter/common
     bindmount /data/docs /home/peter/docs --read-only
+
+
+***We thank atmoz for providing this great docker container!***
+
+
