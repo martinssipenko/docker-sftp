@@ -28,6 +28,7 @@ function createUser() {
         gid="${param[4]}"
         dir="${param[5]}"
     else
+        chpasswdOptions=""
         uid="${param[2]}"
         gid="${param[3]}"
         dir="${param[4]}"
@@ -38,7 +39,8 @@ function createUser() {
         exit 1
     fi
 
-    if $(cat /etc/passwd | cut -d: -f1 | grep -q "^$user:"); then
+    # do not allow two users whose names only differ in casing
+    if grep -qi "^$user:" </etc/passwd; then
         echo "WARNING: User \"$user\" already exists. Skipping."
         return 0
     fi
@@ -57,10 +59,15 @@ function createUser() {
         useraddOptions="$useraddOptions --gid $gid"
     fi
 
-    useradd $useraddOptions $user
+    lowercaseuser=${user,,}
+    useradd $useraddOptions $lowercaseuser -d /home/$user
     mkdir -p /home/$user
     chown root:root /home/$user
     chmod 755 /home/$user
+    if [ $lowercaseuser != $user ]; then
+        sed -i "s/^$lowercaseuser/$user/" /etc/passwd
+        sed -i "s/^$lowercaseuser/$user/" /etc/shadow
+    fi
 
     # Retrieving user id to use it in chown commands instead of the user name
     # to avoid problems on alpine when the user name contains a '.'
