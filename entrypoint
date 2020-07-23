@@ -52,7 +52,7 @@ function createUser() {
     fi
 
     if [ -n "$gid" ]; then
-        if ! $(cat /etc/group | cut -d: -f3 | grep -q "$gid"); then
+        if ! $(cat /etc/group | cut -d: -f3 | grep -qw "$gid"); then
             groupadd --gid $gid "group_$gid"
         fi
 
