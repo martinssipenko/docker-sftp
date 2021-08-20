@@ -80,8 +80,16 @@ function createUser() {
     fi
 
     # Add SSH keys to authorized_keys with valid permissions
+    ssh_key_var_name="SSH_PUB_KEY_${user}"
     if [ -d /home/$user/.ssh/keys ]; then
+        echo ${!ssh_key_var_name} >> /home/$user/.ssh/authorized_keys
         cat /home/$user/.ssh/keys/* >> /home/$user/.ssh/authorized_keys
+        chown $uid /home/$user/.ssh/authorized_keys
+        chmod 600 /home/$user/.ssh/authorized_keys
+    else
+        mkdir -p /home/$user/.ssh
+        touch /home/$user/.ssh/authorized_keys
+        echo ${!ssh_key_var_name} >> /home/$user/.ssh/authorized_keys
         chown $uid /home/$user/.ssh/authorized_keys
         chmod 600 /home/$user/.ssh/authorized_keys
     fi
